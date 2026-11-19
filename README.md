@@ -1,16 +1,48 @@
-# React + Vite
+# LaundryHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**LaundryHub** adalah aplikasi web terintegrasi untuk membantu pengelolaan operasional laundry dalam satu platform. Aplikasi ini dikembangkan sebagai solusi digital untuk mempermudah pengelolaan pesanan, pemantauan status pengerjaan, pencatatan pembayaran, serta analisis operasional laundry.
 
-Currently, two official plugins are available:
+LaundryHub memiliki tiga jenis pengguna, yaitu **Owner, Employee, dan Customer**, dengan hak akses dan antarmuka yang disesuaikan berdasarkan peran masing-masing.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+# Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 1. Prerequisites
 
-## Expanding the ESLint configuration
+Periksa instalasi melalui terminal:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+node -v
+npm -v
+python --version
+git --version
+```
+
+## 2. Clone Repository
+
+Clone repository LaundryHub:
+
+```bash
+git clone <REPOSITORY_URL>
+```
+
+Masuk ke direktori project:
+
+```bash
+cd laundryhub
+```
+
+Install seluruh dependency frontend dan backend JavaScript:
+
+```bash
+npm install
+```
+
+```bash
+npm run build
+```
+
+---
+
+**LaundryHub – Integrated Laundry Management Platform**
