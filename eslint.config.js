@@ -5,11 +5,17 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores([
+    'dist',
+    '.output',
+    '.tanstack',
+    'node_modules',
+    'public',
+    'routeTree.gen.*',
+  ]),
   {
     files: [
       '**/*.{js,jsx}',
-      'api/**/*.js',
       'db/**/*.js',
       'lib/**/*.js',
       'scripts/**/*.{js,mjs}',
@@ -21,9 +27,16 @@ export default defineConfig([
       reactRefresh.configs.vite,
     ],
     languageOptions: {
-      ...globals.node,
-      globals: globals.browser,
+      globals: { ...globals.node, ...globals.browser },
       parserOptions: { ecmaFeatures: { jsx: true } },
+    },
+  },
+  {
+    // File route TanStack Start mengekspor `Route` (bukan komponen) selain
+    // komponennya — pola wajar yang membuat aturan fast-refresh protes.
+    files: ['src/routes/**/*.{js,jsx}'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
     },
   },
 ])

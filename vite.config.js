@@ -1,11 +1,22 @@
-import react from '@vitejs/plugin-react'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
-import tailwindcss from '@tailwindcss/vite'
+import { devtools } from '@tanstack/devtools-vite'
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+
+import viteReact from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+import { nitro } from 'nitro/vite'
+
+const config = defineConfig({
+  resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } },
+  plugins: [devtools(), nitro(), tailwindcss(), tanstackStart(), viteReact()],
+  ssr: {
+    // Fix rolldown MISSING_EXPORT for @tanstack/history in nitro build (upstream mismatch)
+    // Externalize to avoid bundling issue; Node will resolve at runtime
+    external: ['@tanstack/history'],
+  },
+  envPrefix: 'VITE_',
 })
+
+export default config
